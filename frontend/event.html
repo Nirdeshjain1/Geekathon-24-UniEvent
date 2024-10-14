@@ -118,6 +118,7 @@
           <input type="hidden" id="hackathon-url">
           <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Submit & Register</button>
         </form>
+        <button class="mt-4 text-blue-500 hover:text-blue-700" onclick="closeModal()">Cancel</button>
       </div>
     </div>
 
@@ -130,4 +131,27 @@
     <script>
       function openModal(hackathonName, hackathonUrl) {
         document.getElementById('hackathon-title').textContent = `Register for ${hackathonName}`;
-        document.getElementById('hackathon-url').value = hack
+        document.getElementById('hackathon-url').value = hackathonUrl;
+        document.getElementById('registration-modal').style.display = 'flex'; // Show modal
+      }
+
+      function closeModal() {
+        document.getElementById('registration-modal').style.display = 'none'; // Hide modal
+      }
+
+      function submitForm(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const hackathonUrl = document.getElementById('hackathon-url').value;
+
+        // For demonstration, log the data to the console. You can replace this with an actual API call.
+        console.log(`Name: ${name}, Email: ${email}, Hackathon URL: ${hackathonUrl}`);
+
+        alert('Registration successful!'); // Notify the user
+        closeModal(); // Close the modal after submission
+      }
+    </script>
+</body>
+</html>
